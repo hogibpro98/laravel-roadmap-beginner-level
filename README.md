@@ -3,10 +3,13 @@
 ## 🌀 Logos
 - **laravel version:** <code>11</code><br/>
 - **Bootstrap version:** <code>5</code><br/>
-- **Docker:** <code>[5]()</code><br/>
+- **PHP:** <code>8.3</code><br/>
+- **MySQL:** <code>8.4</code><br/>
+- **Docker:** <code>https://github.com/hogibpro98/docker-compose-template</code><br/>
 
 ## 🚀 Quickstart
-- Step 1: Clone <code>[5]()</code> 
+- Step 1: Clone <code>https://github.com/hogibpro98/docker-compose-template</code> 
+- Step 2: Change .env to true config
 
 ## ⭐ Features
 Goal: to create your very first simple Laravel project.
@@ -17,15 +20,25 @@ Goal: to create your very first simple Laravel project.
    <strong>	Routing and Controllers: Basics</strong><br/>
 <details><summary>⭐:<code>Callback Functions and Route::view()</code></summary>
 
-1. Start the container you need:
-2. Enter the work container:
-3. Navigate to
+1. What: cách đặt tên cho các đường dẫn
+2. Where: <code>web.php</code> | <code>api.php</code>
+3. How to: use method <code>name</code> Ex: Route::get('/home', [HomeController::class, 'index'])->name('home');
+4. Why: ngắn gọn, rễ nhớ, thuận tiện sử dụng
+5. When: Khi bạn biết rằng đường dẫn này sẽ được sử dụng ở nhiều nơi
 
 <br/>
 </details>
    ⭐: <code>Routing to a Single Controller Method</code><br/>
    ⭐: <code>Route Parameters</code><br/>
-   ⭐: <code>Route Naming</code><br/>
+<details><summary>⭐:<code>Route Naming</code></summary>
+
+1. What: cách đặt tên cho các đường dẫn
+2. Where: <code>web.php</code> | <code>api.php</code>
+3. How to: use method <code>name</code> Ex: Route::get('/home', [HomeController::class, 'index'])->name('home');
+4. Why: ngắn gọn, rễ nhớ, thuận tiện sử dụng
+5. When: Khi bạn biết rằng đường dẫn này sẽ được sử dụng ở nhiều nơi
+
+</details>
    ⭐: <code>Route Groups</code><br/>
   </td>
   <td>
@@ -60,3 +73,32 @@ Goal: to create your very first simple Laravel project.
   </td>
  </tr>
 </table>
+
+## 💡 Structure:
+
+```mermaid
+classDiagram
+    note for Model "- Work with DB\n- User action log\n- Cache Data\n - Call job\n - Event"
+    Controller <|-- Model
+    View <|-- Controller
+    
+    class Controller {
+        +Router call controller 
+        +view()
+        +json()
+    }
+    
+    class Model {
+        +Repository Pattern
+        +interface(RepositoryContract.php)
+        +abtract(BaseRepository.php)
+        +create repository(Create a Repository class extend BaseRepository)
+        +use in service(Create a service and use repository)
+    }
+    
+    class View{
+        -View data from controller
+        -()
+    }
+
+```
